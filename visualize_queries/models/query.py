@@ -33,7 +33,7 @@ class Query(models.TransientModel):
         self.env.cr.execute((
             "select pg_terminate_backend(%s)"
         ), (self.id,))
-        self._update_queries()
+        self.sudo()._update_queries()
 
     @api.model
     def _update_queries(self):
