@@ -1,5 +1,6 @@
 from odoo import _, api, fields, models, SUPERUSER_ID
 from odoo.exceptions import UserError, RedirectWarning, ValidationError
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DTF
 
 
 class Query(models.TransientModel):
@@ -30,10 +31,20 @@ class Query(models.TransientModel):
         self.env.cr.execute((
             "select pid, query_start, state, query, usename "
             "from pg_stat_activity"
+            "where "
+            "query <> 'COMMIT' "
+            "and query <> 'ROLLBACK' "
         ))
         pids = set()
+
+        def convdt(x):
+            if not x:
+                return False
+            else:
+                return x.strftime(DTF)
         for query in self.env.cr.dictfetchall():
-            query['name'] = query['query']
+            query['name'] = query.pop('query')
+            query['started'] = convdt(query.pop('query_start'))
             queries = self.search([('pid', '=', query['pid'])])
             if not queries:
                 queries.create(query)

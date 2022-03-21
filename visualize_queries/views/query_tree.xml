@@ -10,6 +10,9 @@
 					<field name="age"/>
 					<field name="age_minutes"/>
 					<field name="age_hours"/>
+					<field name="usename"/>
+					<field name="state"/>
+					<field name="started"/>
 				</tree>
 			</field>
 		</record>
