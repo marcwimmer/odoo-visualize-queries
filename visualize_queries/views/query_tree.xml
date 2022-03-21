@@ -1,0 +1,19 @@
+<odoo>
+	<data noupdate='0'>
+
+		<record id="view_db_query_tree" model="ir.ui.view">
+			<field name="model">db.query</field>
+			<field name="arch" type="xml">
+				<tree default_order="" string="" >
+				<button name="cancel" string="Cancel" type="object" />
+					<field name="name" />
+					<field name="age"/>
+					<field name="age_minutes"/>
+					<field name="age_hours"/>
+				</tree>
+			</field>
+		</record>
+
+
+	</data>
+</odoo>
