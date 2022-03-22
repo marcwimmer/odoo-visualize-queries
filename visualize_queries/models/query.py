@@ -12,7 +12,7 @@ class Query(models.TransientModel):
     started = fields.Datetime("Started")
     usename = fields.Char("Username")
     name = fields.Char("Query")
-    age = fields.Float("Age Seconds (Total)", compute_sudo=True)
+    age = fields.Float("Age Seconds (Total)", compute_sudo=True, store=False)
     age_minutes = fields.Float(
         "Age Minutes (Total)", compute="_compute_age", compute_sudo=True)
     age_hours = fields.Float(
