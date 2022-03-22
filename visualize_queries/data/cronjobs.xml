@@ -3,8 +3,8 @@
 
 		<record id="refresh_queries" model="ir.cron">
 			<field name="name">refresh_queries</field>
-			<field name="interval_number">2</field>
-			<field name="interval_type">seconds</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">minutes</field>
 			<field name="model_id" ref="model_db_query" />
 			<field name="state">code</field>
 			<field name="code">model._update_queries()</field>
