@@ -14,9 +14,9 @@ class Query(models.TransientModel):
     name = fields.Char("Query")
     age = fields.Float("Age Seconds (Total)", compute_sudo=True, store=False)
     age_minutes = fields.Float(
-        "Age Minutes (Total)", compute="_compute_age", compute_sudo=True)
+        "Age Minutes (Total)", compute="_compute_age", compute_sudo=True, store=False)
     age_hours = fields.Float(
-        "Age Hours (Total)", compute="_compute_age", compute_sudo=True)
+        "Age Hours (Total)", compute="_compute_age", compute_sudo=True, store=False)
 
     @api.depends('started')
     def _compute_age(self):
